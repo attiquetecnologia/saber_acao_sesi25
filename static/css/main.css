@@ -1,0 +1,61 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.image-placeholder {
+  flex-shrink: 0;
+}
+
+.image-placeholder img {
+  max-width: 280px;
+  height: auto;
+  border: 2px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+  color: #000;
+}
+
+.detalhes {
+  font-size: 1.1em;
+  color: #444;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.sinopse {
+  font-size: 1.3em;
+  line-height: 1.6em;
+  color: #333;
+  max-width: 600px;
+  position: relative;
+}
+
+.sinopse::before {
+  content: "Sinopse";
+  display: block;
+  font-weight: bold;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: #000;
+}
