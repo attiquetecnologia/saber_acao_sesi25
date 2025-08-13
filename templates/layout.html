@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saber em Ação 2025</title>
+  
+  {% load static %}
+  
+  <link rel="stylesheet" href="{% static 'bootstrap-5.3.6/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  
+  {% block styles %}{% endblock %}
+</head>
+
+<body>
+  {% include 'navbar.html' %}
+
+  <form class="search-bar-container" action="{# url 'pesquisa' #}" method="get">
+    <input type="text" class="search-bar" name="q" placeholder="Pesquisar..." aria-label="Barra de pesquisa">
+    <button type="submit" class="submit-button" aria-label="Pesquisar">
+      <i class="fas fa-search search-icon"></i>
+    </button>
+  </form>
+
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <script src="{% static 'bootstrap-5.3.6/js/bootstrap.bundle.min.js' %}"></script>
+  
+
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>
