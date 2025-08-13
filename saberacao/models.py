@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
+
 import os
 from datetime import date
 
@@ -28,8 +30,6 @@ class Livro(models.Model):
     def __str__(self):
         return self.titulo
 
-from django.db import models
-from django.contrib.auth.models import User
 
 class Aluno(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
