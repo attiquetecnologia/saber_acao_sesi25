@@ -17,11 +17,12 @@ class Livro(models.Model):
     def __str__(self):
         return self.titulo
 
+from django.db import models
+from django.contrib.auth.models import User
+
 class Aluno(models.Model):
-    id = models.AutoField(primary_key=True)
-    nome = models.CharField(max_length=100, null=False, blank=False)
-    email = models.CharField(max_length=200, null=False, blank=False)
-    senha = models.CharField(max_length=2000, null=False, blank=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
+    
     data_nascimento = models.DateField(null=False, blank=False)
     serie = models.CharField(max_length=20, null=False, blank=False)
 
@@ -30,7 +31,7 @@ class Aluno(models.Model):
         verbose_name_plural = "Alunos"
 
     def __str__(self):
-        return self.nome
+        return self.user.username
 
 class Atividade(models.Model):
     id = models.AutoField(primary_key=True)
