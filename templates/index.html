@@ -7,15 +7,16 @@
 .carousel-indicators [data-bs-target] {
     display: block !important;
     background-color: red !important;
-    width: 20px !important;
-    height: 20px !important;
     margin: 5px !important;
-    border-radius: 50% !important;
+}
+.carousel-control-prev, .carousel-control-next {
+    display: block;
+    background-color: red !important;
 }
 </style>
 <h1>Página Inicial</h1>
 
-<div id="carouselExampleIndicators" class="carousel slide">
+<div id="carouselExampleIndicators" class="carousel carousel-dark slide carousel-fae" data-bs-ride="true">
     <div class="carousel-indicators">
         {% for grupo in livros %}
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>

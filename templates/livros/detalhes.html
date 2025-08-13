@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+  <style>
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.image-placeholder {
+  flex-shrink: 0;
+}
+
+.image-placeholder img {
+  max-width: 280px;
+  height: auto;
+  border: 2px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+  color: #000;
+}
+
+.detalhes {
+  font-size: 1.1em;
+  color: #444;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.sinopse {
+  font-size: 1.3em;
+  line-height: 1.6em;
+  color: #333;
+  max-width: 600px;
+  position: relative;
+}
+
+.sinopse::before {
+  content: "Sinopse";
+  display: block;
+  font-weight: bold;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+  </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="main">
+    <div class="image-placeholder">
+      <img src="{# url_for('download', folder='livros', filename=livro.imagem) #}" alt="Imagem Placeholder">
+    </div>
+    <div>
+      <h1>{{livro.titulo}}</h1>
+      <p class="detalhes">{{livro.autor}} · {{livro.ano_lancamento}}</p>
+      <p class="sinopse">{{livro.sinopse}}</p>
+
+      <a href="{# url_for('Atividades.lista', livro=livro.id) #}" class="btn btn-primary">Ver publicações</a> | 
+      <a href="{# url_for('Atividades.enviar_anexo', livro=livro.id) #}" class="btn btn-success">Publicar um Trabalho</a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
