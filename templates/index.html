@@ -1,7 +1,60 @@
 {% extends 'layout.html' %}
-
+ 
+  {% load static %}
 {% block content %}
-
+<style>
+    /* Apenas para teste, remova depois de corrigir o problema */
+.carousel-indicators [data-bs-target] {
+    display: block !important;
+    background-color: red !important;
+    width: 20px !important;
+    height: 20px !important;
+    margin: 5px !important;
+    border-radius: 50% !important;
+}
+</style>
 <h1>Página Inicial</h1>
+
+<div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+        {% for grupo in livros %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
+        {% endfor %}
+    </div>
+    
+    <div class="carousel-inner">
+        {% for grupo in livros %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <div class="row">
+                    {% for livro in grupo %}
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="card">
+                                {% if livro.imagem %}
+                                    <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}">
+                                {% else %}
+                                    <img src="{% static 'images/placeholder_livro.png' %}" class="card-img-top" alt="Capa indisponível">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ livro.titulo }}</h5>
+                                    <p class="card-text">{{ livro.sinopse|truncatechars:100 }}</p>
+                                    <a href="#" class="btn btn-primary">Ver Mais</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+    </button>
+</div>
 
 {% endblock %}
