@@ -7,7 +7,7 @@
   {% for l in livros %}
     <div class="col">
     <div class="card mx-2" style="width: 12rem;">
-    {% if livro.imagem %}
+    {% if l.imagem %}
       <img src="{{ l.imagem.url }}" class="card-img-top" alt="{{ l.title }}">
     {% else %}
       <img src="{% static 'images/placeholder_livro.png' %}" class="card-img-top" alt="Capa indisponível">

@@ -28,7 +28,7 @@ def livros_detalhes(request, id: int) -> HttpResponse:
 
 def livros(request) -> HttpResponse:
     """ Retorna livros por aluno ou por livro """
-    livros = Livro.objects.filter()
+    livros = Livro.objects.all()
     context = {
             'livros': livros,
         }
