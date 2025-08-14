@@ -17,7 +17,7 @@ def validate_file_extension(value):
 class Livro(models.Model):
     id = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=150, null=False, blank=False)
-    imagem = models.ImageField(upload_to='livros/capas/', null=True, blank=True)
+    imagem = models.ImageField(upload_to='livros/', null=True, blank=True)
     sinopse = models.CharField(max_length=2000, null=True, blank=True)
     ano_lancamento = models.IntegerField(null=True, blank=True)
     generos = models.CharField(max_length=100, null=True, blank=True)
