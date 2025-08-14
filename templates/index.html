@@ -5,7 +5,7 @@
 <style>
 /* Apenas para teste, remova depois de corrigir o problema */
 .carousel {
-    min-height: 400px;
+    min-height: 500px;
 }
 .carousel-indicators [data-bs-target] {
     display: block !important;
@@ -17,7 +17,10 @@
     background-color: red !important;
     width: 2%;
 }
-
+.carousel-inner {
+    margin-left: 30px;
+    margin-right: 30px;
+}
 </style>
 <h1>Página Inicial</h1>
 
@@ -31,19 +34,21 @@
     <div class="carousel-inner">
         {% for grupo in livros %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <div class="row">
+                <div class="row" style="justify-content: center;">
                     {% for livro in grupo %}
-                        <div class="col-12 col-md-4 mb-3">
+                        <div class="col-12 col-md-2 mb-1">
                             <div class="card">
                                 {% if livro.imagem %}
+                                <a href="{% url 'saberacao:livros_detalhes' livro.id %}">
                                     <img src="{{ livro.imagem.url }}" class="card-img-top" alt="{{ livro.titulo }}">
+                                </a>
                                 {% else %}
-                                    <img src="{% static 'images/placeholder_livro.png' %}" class="card-img-top" alt="Capa indisponível">
+                                    <a href="{% url 'saberacao:livros_detalhes' livro.id %}">
+                                        <img src="{% static 'images/placeholder_livro.png' %}" class="card-img-top" alt="Capa indisponível">
+                                    </a>
                                 {% endif %}
                                 <div class="card-body">
                                     <h5 class="card-title">{{ livro.titulo }}</h5>
-                                    <p class="card-text">{{ livro.sinopse|truncatechars:100 }}</p>
-                                    <a href="{% url 'saberacao:livros_detalhes' livro.id %}" class="btn btn-primary">Detalhes</a>
                                 </div>
                             </div>
                         </div>

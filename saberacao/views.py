@@ -4,10 +4,10 @@ from .models import Livro
 
 def index(request):
     
-    livros = Livro.objects.all().order_by('-id')[:9]
+    livros = Livro.objects.all().order_by('-id')[:15]
     livros_agrupados = []
-    for i in range(0, len(livros), 3):
-        livros_agrupados.append(livros[i:i+3])
+    for i in range(0, len(livros), 5):
+        livros_agrupados.append(livros[i:i+5])
 
     context = { 
         'livros': livros_agrupados,
