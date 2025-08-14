@@ -23,8 +23,18 @@ def livros_detalhes(request, id: int) -> HttpResponse:
         'livro': livro,
     }
 
-    # Renderiza o template, passando o objeto livro para ele
     return render(request, 'livros/detalhes.html', context)
+
+def atividades_detalhes(request, id: int) -> HttpResponse:
+    """ Detalhes do atividade carousel """
+    atividade = get_object_or_404(Atividade, pk=id)
+    
+    context = {
+        'atividade': atividade,
+    }
+
+    return render(request, 'atividades/detalhes.html', context)
+
 
 def livros(request) -> HttpResponse:
     """ Retorna livros por aluno ou por livro """
@@ -36,8 +46,16 @@ def livros(request) -> HttpResponse:
 
 def atividades(request) -> HttpResponse:
     """ Retorna atividades por aluno ou por livro """
-    atividades = Atividade.objects.filter()
+    lista = Atividade.objects
+    if 'livro' in request.GET:
+        livro = request.GET.get('livro')
+        lista = lista.filter(livro_id=livro)
+    elif 'aluno' in request.GET:
+        aluno = request.GET.get('aluno')
+        lista = lista.filter(aluno_id=aluno)
+    else:
+        lista = lista.all()     
     context = {
-            'atividades': atividades,
+            'lista': lista,
         }
     return render(request, 'atividades/lista.html', context)

@@ -1,5 +1,31 @@
+{% extends 'layout.html' %}
+{% load static %}
 
-{% for atividade in atividades %}
-<p>{{ atividade }}</p>
+{% block content %}
+  <div class="container">
+    <h2>Trabalhos {% if 'aluno' in request.args %}
+    do aluno Nome do aluno
+    {% endif %} {% if 'livro' in request.args %}
+    do livro Nome do livro
+    {% endif %}</h2>
+    
 
-{% endfor %}
+    <div class="atividades cards">
+      {% for l in lista %}
+      <!-- Card 1 -->
+      <div class="card card-atividade">
+        
+        <h3>{{ l.titulo }}</h3>
+        <h6>Autor: {{l.aluno_id}}</h6>
+        <p>Livro: {{ l.livro_id}} </p>
+        <p>{{ l.descricao|truncatechars:120 }}</p>
+        <a href="{% url "saberacao:atividades_detalhes" l.id %}" >
+          <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
+        </a>
+      </div>
+      {% endfor %}
+      
+    </div>
+
+  </div>
+{% endblock %}

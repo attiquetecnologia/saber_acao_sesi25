@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+  
+  <div class="container d-flex ">
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-header"></div>
+      <div class="card-body">
+        <h3 class="card-title">Aluno: {{atividade.aluno_id}}</h3>
+        <ul>
+          <li><a href="#" >Lançar uma publicação para o livro</a></li>
+          <li><a href="{% url 'saberacao:atividades'%}?aluno={{atividade.aluno_id}}" >Mais publicações do aluno</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" tyle="width: 18rem;">
+      <div class="card-header"></div>
+      <div class="card-body">
+        <h1 class="card-title">{{ atividade.titulo }}</h1>
+
+        <p class="card-text">{{atividade.descricao}}</p>
+      </div>
+      <div class="image-placeholder">
+        
+        {% if atividade.imagem %}
+        <img src="{{ atividade.imagem.url }}" alt="{{ atividade.titulo }}">
+        {% else %}
+        <img src="{% static 'images/placeholder_livro.png' %}" alt="Capa indisponível">
+        {% endif %}
+      
+        <img src="{# url_for('download', folder='atividades', filename=atividade.imagem) #}" alt="{{atividade.titulo}}">
+      
+      </div>
+    </div>
+
+  </div>
+
+</body>
+  {% endblock %}

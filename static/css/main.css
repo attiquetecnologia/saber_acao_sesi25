@@ -92,3 +92,33 @@ body {
   margin-bottom: 10px;
   color: #000;
 }
+
+/* Atividades */
+.atividades {
+      display: flex;
+      gap: 100px;
+      flex-wrap: wrap;
+    }
+
+    .atividades>.card-atividade {
+      background-color: black;
+      color: white;
+      padding: 40px;
+      width: 300px;
+      position: relative;
+    }
+
+    .atividades>.card-atividade>.icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+    }
+
+    .atividades>.card img {
+      width: 100%;
+      margin-top: 20px;
+      background-color: #ddd;
+      height: 200px;
+      object-fit: cover;
+    }
