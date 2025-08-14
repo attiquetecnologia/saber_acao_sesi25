@@ -48,7 +48,7 @@ class Atividade(models.Model):
     id = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=150, null=False, blank=False)
     descricao = models.CharField(max_length=1000, null=False, blank=False)
-    anexo = models.FileField(upload_to='atividades/anexos/', validators=[validate_file_extension], null=True, blank=True)
+    anexo = models.FileField(upload_to='atividades', validators=[validate_file_extension], null=True, blank=True)
     data_de_criacao = models.DateField(default=date.today, null=False, blank=False)
     data_de_entrega = models.DateField(null=True, blank=True)
     links = models.CharField(max_length=2000, null=True, blank=True)
@@ -62,4 +62,4 @@ class Atividade(models.Model):
         verbose_name_plural = "Atividades"
 
     def __str__(self):
-        return self.titulo
+        return f"({self.id}) - {self.titulo}, {self.descricao}, {self.livro}, {self.aluno}"

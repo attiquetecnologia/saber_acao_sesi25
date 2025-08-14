@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
-from .models import Livro
+from .models import Livro, Atividade
 
 def index(request):
     """ Carrousel """
@@ -25,3 +25,11 @@ def livros_detalhes(request, id: int) -> HttpResponse:
 
     # Renderiza o template, passando o objeto livro para ele
     return render(request, 'livros/detalhes.html', context)
+
+def atividades(request) -> HttpResponse:
+    """ Retorna atividades por aluno ou por livro """
+    atividades = Atividade.objects.filter()
+    context = {
+            'atividades': atividades,
+        }
+    return render(request, 'atividades/lista.html', context)
