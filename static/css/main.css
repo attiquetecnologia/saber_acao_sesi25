@@ -11,6 +11,39 @@ body {
   padding: 0 20px;
 }
 
+/* Backgrounds */
+.bg-vermelho {
+    background-color: #dc3545; /* Cor de fundo vermelha */
+}
+.bg-custom-navbar {
+    background-color: #619ebf !important;
+}
+
+/* Opcional: Estilize a barra de pesquisa e o botão */
+.search-bar-container {
+    padding: 20px;
+}
+
+/* Custom .carousel */
+.carousel {
+    min-height: 500px;
+}
+.carousel-indicators [data-bs-target] {
+    display: block !important;
+    background-color: red !important;
+    margin: 5px !important;
+}
+.carousel-control-prev, .carousel-control-next {
+    display: block;
+    /* background-color: red !important; */
+    width: 2%;
+}
+.carousel-inner {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+/* Custom main content */
 .main {
   display: flex;
   flex-direction: row;
