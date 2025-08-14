@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
 
 from .models import Livro
 
 def index(request):
-    
+    """ Carrousel """
     livros = Livro.objects.all().order_by('-id')[:15]
     livros_agrupados = []
     for i in range(0, len(livros), 5):
@@ -13,3 +14,14 @@ def index(request):
         'livros': livros_agrupados,
     }
     return render(request, 'index.html', context)
+
+def livros_detalhes(request, id: int) -> HttpResponse:
+    """ Detalhes do livros carousel """
+    livro = get_object_or_404(Livro, pk=id)
+    
+    context = {
+        'livro': livro,
+    }
+
+    # Renderiza o template, passando o objeto livro para ele
+    return render(request, 'livros/detalhes.html', context)
