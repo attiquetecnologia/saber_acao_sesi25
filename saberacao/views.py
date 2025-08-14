@@ -26,6 +26,14 @@ def livros_detalhes(request, id: int) -> HttpResponse:
     # Renderiza o template, passando o objeto livro para ele
     return render(request, 'livros/detalhes.html', context)
 
+def livros(request) -> HttpResponse:
+    """ Retorna livros por aluno ou por livro """
+    livros = Livro.objects.filter()
+    context = {
+            'livros': livros,
+        }
+    return render(request, 'livros/lista.html', context)
+
 def atividades(request) -> HttpResponse:
     """ Retorna atividades por aluno ou por livro """
     atividades = Atividade.objects.filter()
