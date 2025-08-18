@@ -33,7 +33,9 @@ class Livro(models.Model):
 
 class Aluno(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
-    
+    primeiro_nome = models.TextField(max_length=150, null=False, blank=False, default="")
+    sobrenome = models.TextField(max_length=150, null=False, blank=False, default="")
+    matricula = models.TextField(max_length=150, null=False, blank=False)
     data_nascimento = models.DateField(null=False, blank=False)
     serie = models.CharField(max_length=20, null=False, blank=False)
 
@@ -42,7 +44,7 @@ class Aluno(models.Model):
         verbose_name_plural = "Alunos"
 
     def __str__(self):
-        return self.user.username
+        return f"{self.primeiro_nome} {self.sobrenome}"
 
 class Atividade(models.Model):
     id = models.AutoField(primary_key=True)

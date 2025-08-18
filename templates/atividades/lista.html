@@ -16,8 +16,8 @@
       <div class="card card-atividade">
         
         <h3>{{ l.titulo }}</h3>
-        <h6>Autor: {{l.aluno_id}}</h6>
-        <p>Livro: {{ l.livro_id}} </p>
+        <h6>Aluno: {{l.aluno}}</h6>
+        <p>Livro: {{ l.livro}} </p>
         <p>{{ l.descricao|truncatechars:120 }}</p>
         <a href="{% url "saberacao:atividades_detalhes" l.id %}" >
           <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Imagem do trabalho">
