@@ -63,17 +63,18 @@ def atividades(request) -> HttpResponse:
 
 def atividades_publicar(request) -> HttpResponse:
     """ Retorna atividades por aluno ou por livro """
-
+    message = ""
     if request.method=="POST":
         form = AtividadeForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('pagina_de_sucesso')
+            message = "Atividade criada com sucesso"
     else:
         form = AtividadeForm()
 
     context = {
-        'form': form
+        'form': form,
+        'message': message
     }
     
     return render(request, 'atividades/publicar_atividade.html', context)

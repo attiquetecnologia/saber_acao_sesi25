@@ -22,7 +22,9 @@
     <form method="post" enctype="multipart/form-data" class="row">
         {% csrf_token %}
         {% if form.errors %}
-        {{ form.errors }}
+        <div class="alert alert-success" role="alert">{{ form.errors }}</div>
+        {% elif message %}
+        <div class="alert alert-success" role="alert">{{ message }}</div>
         {% endif %}
         <div class="col">
             <div class="mb-3">
