@@ -1,7 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 
 from .models import Livro, Atividade
+from .forms import AtividadeForm
 
 def index(request):
     """ Carrousel """
@@ -59,3 +60,20 @@ def atividades(request) -> HttpResponse:
             'lista': lista,
         }
     return render(request, 'atividades/lista.html', context)
+
+def atividades_publicar(request) -> HttpResponse:
+    """ Retorna atividades por aluno ou por livro """
+
+    if request.method=="POST":
+        form = AtividadeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('pagina_de_sucesso')
+    else:
+        form = AtividadeForm()
+
+    context = {
+        'form': form
+    }
+    
+    return render(request, 'atividades/publicar_atividade.html', context)

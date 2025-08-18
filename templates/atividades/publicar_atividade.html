@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+   <style>
+      .upload-box {
+    border: 1px solid #999;
+    border-radius: 20px;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+  }
+   </style>
+<div class="container">
+    <h2>Publicação para o livro</h2>
+    <h3>{{ livro.titulo }}</h3>
+    <form method="post" enctype="multipart/form-data" class="row">
+        {% csrf_token %}
+        {% if form.errors %}
+        {{ form.errors }}
+        {% endif %}
+        <div class="col">
+            <div class="mb-3">
+                <label for="{{ form.livro.id_for_label }}" class="form-label">Livro</label>
+                {{ form.livro }}
+                {% if form.livro.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.livro.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="{{ form.aluno.id_for_label }}" class="form-label">Aluno</label>
+                {{ form.aluno }}
+                {% if form.aluno.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.aluno.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="{{ form.titulo.id_for_label }}" class="form-label">Título do Trabalho</label>
+                {{ form.titulo }}
+                {% if form.titulo.errors %}
+                    <div class="alert alert-danger">
+                        {{ form.titulo.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3">
+                <label for="{{ form.descricao.id_for_label }}"  class="form-label">Descrição:</label>
+                {{ form.descricao }}
+                {% if form.descricao.errors %}
+                <div class="alert alert-danger">
+                    {{ form.descricao.errors }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="{{ form.links.id_for_label }}"  class="form-label">Links</label>
+                {{ form.links }}
+                {% if form.links.errors %}
+                <div class="alert alert-danger">
+                    {{ form.links.errors }}
+                </div>
+                {% endif %}  
+            </div>
+        </div>
+
+        <div class="col">
+            <label for="{{ form.anexo.id_for_label }}" class="form-label">Anexar Documentos</label>
+            <div class="upload-box" onclick="document.getElementById('{{ form.anexo.id_for_label }}').click()">
+            {{ form.anexo }}
+            <img src="/static/images/nuvem.png" alt="Upload Icon">
+            <div class="upload-text">Serão aceitos anexos:</div>
+            <div class="upload-accepted">.png, .jpg, .txt, .docx</div>
+        </div>
+        {% if form.anexo.errors %}
+            <div class="alert alert-danger">
+                {{ form.anexo.errors }}
+            </div>
+        {% endif %}
+        </div>
+
+        <div class="button-container">
+            <button class="btn btn-primary" type="submit">ENVIAR</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
