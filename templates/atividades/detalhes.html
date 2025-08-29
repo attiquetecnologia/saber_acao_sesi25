@@ -9,7 +9,7 @@
       <div class="card-body">
         <h3 class="card-title">Aluno: {{atividade.aluno.primeiro_nome}}</h3>
         <ul>
-          <li><a href="#" >Lançar uma publicação para o livro</a></li>
+          <li><a href="{% url 'saberacao:atividades_publicar' %}" >Lançar uma publicação para o livro</a></li>
           <li><a href="{% url 'saberacao:atividades'%}?aluno={{atividade.aluno_id}}" >Mais publicações do aluno</a></li>
         </ul>
       </div>
