@@ -21,7 +21,7 @@
       <p class="sinopse">{{livro.sinopse}}</p>
 
       <a href="{% url 'saberacao:atividades'%}?livro={{ livro.id }}" class="btn btn-primary">Ver publicações</a> | 
-      <a href="{# url_for('Atividades.enviar_anexo', livro=livro.id) #}" class="btn btn-success">Publicar um Trabalho</a>
+      <a href="{% url 'saberacao:atividades_publicar' %}" class="btn btn-success">Publicar um Trabalho</a>
     </div>
 
   </div>

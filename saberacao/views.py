@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 from .models import Livro, Atividade
 from .forms import AtividadeForm
@@ -61,6 +62,7 @@ def atividades(request) -> HttpResponse:
         }
     return render(request, 'atividades/lista.html', context)
 
+@login_required
 def atividades_publicar(request) -> HttpResponse:
     """ Retorna atividades por aluno ou por livro """
     message = ""
