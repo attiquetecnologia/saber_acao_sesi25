@@ -1,0 +1,19 @@
+body {
+        background: url('/static/imagem.png') no-repeat center center;
+        background-size: cover;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+.login-box {
+        background: rgba(115, 146, 161, 0.453);
+        padding: 40px;
+        border-radius: 15px;
+        width: 400px;
+        text-align: center;
+        backdrop-filter: blur(1px);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
