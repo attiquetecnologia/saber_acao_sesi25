@@ -29,12 +29,17 @@
               Perfil
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Perfil</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li>
+                <form method="post" action="{% url 'logout'%}?next={{request.path}}">
+                {% csrf_token %}
+                    <button class="dropdown-item" type="submit">Sair</button>
+                </form>
+              </li>
             </ul>
           </li>
         </ul>
