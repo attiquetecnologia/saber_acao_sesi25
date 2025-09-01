@@ -66,13 +66,19 @@ def atividades(request) -> HttpResponse:
 def atividades_publicar(request) -> HttpResponse:
     """ Retorna atividades por aluno ou por livro """
     message = ""
+
     if request.method=="POST":
         form = AtividadeForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             message = "Atividade criada com sucesso"
     else:
-        form = AtividadeForm()
+        livro_id = request.GET.get("livro")
+        if livro_id:
+            livro = get_object_or_404(Livro, pk=livro_id)
+            # O formulário só irá listar o livro específico.
+            form = AtividadeForm(initial={'livro': livro})
+            form.fields['livro'].queryset = Livro.objects.filter(pk=livro_id)
 
     context = {
         'form': form,
