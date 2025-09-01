@@ -79,7 +79,8 @@ def atividades_publicar(request) -> HttpResponse:
             # O formulário só irá listar o livro específico.
             form = AtividadeForm(initial={'livro': livro})
             form.fields['livro'].queryset = Livro.objects.filter(pk=livro_id)
-
+        else:
+            form = AtividadeForm()
     context = {
         'form': form,
         'message': message
